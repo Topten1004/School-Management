@@ -1,0 +1,80 @@
+﻿@using School.Models
+@model InstructorViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" runat="server" href="https://site-assets.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link href="../css/manage_subject.css" rel="stylesheet" runat="server" />
+<body>
+        <div class="d-flex justify-content-end" style="padding-right: 50px;"> 
+            <div id="labelDiv" style="background-color: #8ed9f8;width: 320px;height: 50px; text-align: center; border-radius: 10px; font-size: 25px; display: flex; justify-content: center; align-items: center;">
+                Manage Teacher Subjects
+            </div>
+        </div>
+        <div class="row fs-2" style="margin-top:80px">
+            <div class="col-3">
+                <div class="d-flex justify-content-end">
+                    <span style="color: red;">Teacher:</span>
+                </div>
+            </div>
+            <div class="col-9">
+                <select id="instTeacher" class="form-select" aria-label="Input Teacher">
+                @foreach(var item in Model.users)
+                    {
+                    @if(item.Title == "teacher")
+                        {
+                        if(item.Id == @Model.teacherId)
+                        {
+                            <option id=@Html.DisplayFor(modelItem => item.Id) selected="selected">@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</option>
+                        }
+                        else
+                        {
+                            <option id=@Html.DisplayFor(modelItem => item.Id)>@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</option>                            
+                        }
+                    }
+                    }
+                </select>
+            </div>
+            <div class="col-12 mt-5">
+                <span style="color: red;">Subjects:</span>
+            </div>
+
+            <div class="col-12 mt-3" style="min-height: 350px;">
+                <div class="d-flex flex-wrap align-items-center" >
+                @foreach(var tsubject in Model.tsubject)
+                {   
+                     <div class="itemDiv">
+                          <div>
+                              @Html.DisplayFor(modelItem => tsubject.Name)
+                          </div>
+                          <i class="fa fa-trash" id=@Html.DisplayFor(modelItem => tsubject.Id) onclick= "onDeleteInstructor(this)" aria-hidden="true"></i>
+                     </div>
+                }
+                </div>
+            </div>
+            <div class="col-3 mt-5">
+                <div class="d-flex justify-content-end">
+                    <span style="color: red;">Add Subject:</span>
+                </div>
+            </div>
+            <div class="col-9 mt-5">
+                <div style="max-width: 400px;" >
+                    <div>
+                        <select id="instSubject" class="form-select" aria-label="Input Subject">
+                        @foreach(var subject in Model.subjects)
+                        {
+                            <option id=@Html.DisplayFor(modelItem => subject.Id)>@Html.DisplayFor(modelItem => subject.Name)</option>    
+                        }
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-end mt-5">
+                        <button type="button" id="btnAddInstructor">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>

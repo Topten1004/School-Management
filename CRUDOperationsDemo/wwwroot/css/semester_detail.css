@@ -1,0 +1,32 @@
+.addDiv {
+    border-radius:  20px;
+    display : flex;
+    justify-content:  center;
+    align-items: center;
+
+    min-width:  250px;
+
+    background-color: #df9463;
+}
+
+.periodOneDiv {
+    border-radius: 30px;
+    background-color: rgb(222, 230, 119);
+    display : flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.periodTwoDiv {
+    border-radius: 30px;
+    background-color: rgb(235, 177, 225);
+    display : flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-left: 35px;
+    padding-right: 35px;
+}

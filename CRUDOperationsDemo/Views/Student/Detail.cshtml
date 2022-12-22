@@ -1,0 +1,110 @@
+@using School.Models
+@model StudentPortalViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" runat="server">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="../css/semester_detail.css" rel="stylesheet" runat="server" />
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row fs-2">
+            <div class="col-6">
+                <div class="d-flex justify-content-start align-items-center">
+                    <div style="color :red">
+                       Student Name : &nbsp;
+                    </div>
+                    <div id="@Model.StudentName" class="student_name">
+                        @Model.StudentName
+                    </div>
+                    <div id="@Model.Email" class="student_email">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-start align-items-center">
+                    <div style="color :red">
+                        Date : &nbsp;
+                    </div>
+                    <div class="">@Model.Date</div>
+                </div>
+                <div class="d-flex justify-content-start align-items-center fs-4">
+                    <div style="color :red">
+                        Semester : &nbsp;
+                    </div>
+                    <div class="">
+                        <select id="semesterItems" aria-label="Select Semester">
+                            @foreach (var semester in Model.Semesters)
+                            {
+                                @if (Model.Current_Semester == semester)
+                                {
+                                    <option style="color: rgb(156, 98, 11);width:50% !important" id="@semester.Name" selected="selected"> @semester.Name </option>
+                                }
+                                else
+                                {
+                                    <option style="color: rgb(156, 98, 11);width:50% !important" id="@semester.Name"> @semester.Name </option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-flex-end align-items-center mt-3">
+                    <div class="addDiv text-uppercase fs-4">
+                        ACHRAYUS : &nbsp;<span style="color: red;">@Model.Achrayus</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="d-flex justify-content-end align-items-center">
+                    <img src="../images/logo.png" />
+                </div>
+            </div>
+            @foreach(var item in Model.PointSystems)
+            {
+                <div class="col-12 mt-5">
+                    <div class="periodOneDiv fs-4">
+                        <div>
+                            @item.SubjectName <span style="color: red;">@item.Teacher</span>
+                        </div>
+                        <div>
+                            Allowed : <span style="color: red;">@item.Allowed</span> &nbsp;
+                            Missed : <span style="color: red;">@item.Missed</span>&nbsp;
+                            POINTS DEDUCTED : <span style="color: red;">@item.Deducated</span>&nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 p-5">
+                @foreach (var absent in item.StudentAbsenses)
+                {
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="fs-5 d-flex" style="column-gap: 20px;">
+                                <div style="color: rgb(11, 115, 156); min-width: 200px;">
+                                    @if(absent.AbsenseType == 2)
+                                    {
+                                        <div style="color:rgb(146, 144, 19)">Late</div>                                                
+                                    }
+                                    @if(absent.AbsenseType == 3)
+                                    {
+                                        <div style="color:rgb(156, 98, 11)">Absent Unexcused</div>                                                
+                                    }
+                                    </div>
+                                <div>@absent.Date.DayOfWeek @absent.Date.ToShortDateString()</div>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <div class="fs-5 d-flex justify-content-start" style="column-gap: 20px;">
+                                <div style="color: rgb(156, 98, 11);">Note:</div>
+                                <div>@absent.Note</div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                </div>
+            }
+        </div>
+    </div>
+</body>
+}

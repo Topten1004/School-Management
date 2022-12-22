@@ -1,0 +1,67 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.iconDiv {
+    max-width: 550px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+    .iconDiv img {
+        margin-top: 30px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+.grayDiv {
+    margin-top: 70px;
+    margin-bottom: 30px;
+    color: white;
+    border-radius: 30px;
+    background-color: gray;
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 25px;
+}
+
+.smallGrayDiv {
+    color: white;
+    border-radius: 30px;
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: gray;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+
+#btnRecordSave {
+    text-transform: uppercase !important;
+    border: none !important;
+    height: 40px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    font-size: 20px;
+    min-width: 200px;
+    background-color: rgb(255, 146, 98);
+    border-radius: 30px;
+}

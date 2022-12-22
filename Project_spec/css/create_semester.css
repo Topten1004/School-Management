@@ -1,0 +1,27 @@
+input {
+    outline : 1px solid gray !important;
+    height : 40px;
+    padding: 20px;
+    border-radius : 30px;
+    border: none;
+    font-size: 20px;
+
+    min-width: 400px;
+}
+
+button {
+    text-transform : uppercase !important;
+    border : none !important;
+    height : 40px;
+    cursor : pointer;
+    letter-spacing : 2px;
+    font-size: 20px;
+
+    min-width: 200px;
+
+    background-color: rgb(255, 146, 98);
+    border-radius: 30px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+}

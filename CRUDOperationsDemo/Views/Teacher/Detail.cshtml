@@ -1,0 +1,102 @@
+@using School.Models
+@model TeacherViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="../css/list.css" rel="stylesheet" runat="server" />
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row fs-2">
+            <div class="col-6">
+                <div class="d-flex justify-content-start align-items-center">
+                    <div style="color :red">
+                        Teacher : &nbsp;
+                    </div>
+                    <div id="absenseTeacher">@Model.name</div>
+                </div>
+                <div class="d-flex justify-content-start align-items-center">
+                    <div style="color :red">
+                        Subject : &nbsp;
+                    </div>
+                    <div id="absenseSubject">@Model.subject</div>
+                </div>
+                <div class="d-flex justify-content-start align-items-center">
+                    <div style="color :red">
+                        Period : &nbsp;
+                    </div>
+                    <div>@Model.period</div>
+                </div>
+                <div class="d-flex justify-content-start align-items-center">
+                    <div style="color :red">
+                        Date : &nbsp;
+                    </div>
+                    <div class="" id="dateTeacher">@Model.date</div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="d-flex justify-content-end align-items-center">
+                    <img src="../images/logo.png" />
+                </div>
+            </div>
+            <div class="col-12 mt-5">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th class="text-center">PRESENT</th>
+                            <th class="text-center">LATE</th>
+                            <th class="text-center">ABSENT</th>
+                            <th class="text-center">Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model.students)
+                        {
+                        <tr>
+                             <td>
+                                <div class="d-flex justify-content-start align-items-center" style="height: 80px;">
+                                    <div class="p-4">
+                                        @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center" style="height: 80px;">
+                                    <input value="1" type="radio" class="form-check-input" name=@Html.DisplayFor(modelItem => item.Id) style="background-color:green" checked>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center" style="height: 80px;">
+                                    <input value="2" type="radio" class="form-check-input" name=@Html.DisplayFor(modelItem => item.Id) style="background-color:burlywood">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center" style="height: 80px;">
+                                    <input value="3" type="radio" class="form-check-input" name=@Html.DisplayFor(modelItem => item.Id) style="background-color:red">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center" style="height: 80px;">
+                                    <img src="../images/folder.png" />
+                                    <input class="teacherNote" id=@Html.DisplayFor(modelItem => item.Id)>
+                                </div>
+                            </td>
+                        </tr>                            
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-12 mt-3">
+            <div class="d-flex justify-content-end">
+                <button type="button" id="teacherSubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</body>

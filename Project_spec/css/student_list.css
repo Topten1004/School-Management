@@ -1,0 +1,60 @@
+input {
+    outline : 1px solid gray !important;
+    height : 40px;
+    padding: 20px;
+    border-radius : 30px;
+    border: none;
+    font-size: 20px;
+
+    min-width: 400px;
+}
+
+button {
+    text-transform : uppercase !important;
+    border : none !important;
+    height : 40px;
+    cursor : pointer;
+    letter-spacing : 2px;
+    font-size: 20px;
+
+    min-width: 200px;
+
+    background-color: rgb(255, 146, 98);
+    border-radius: 30px;
+}
+
+.itemDiv {
+    cursor: pointer;
+    margin-bottom: 20px;
+
+    background-color: rgb(247, 223, 145);
+    width: 30%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-radius: 30px;
+
+    padding: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+
+    font-size: 25px;
+}
+
+.labelDiv {
+    background-color: #f990cc;
+    width: 250px;
+    height: 50px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    font-size: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

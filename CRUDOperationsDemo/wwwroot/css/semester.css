@@ -1,0 +1,57 @@
+.addDiv {
+    border-radius:  20px;
+    display : flex;
+    justify-content:  center;
+    align-items: center;
+
+    min-width:  250px;
+
+    background-color: #df9463;
+}
+
+button {
+    text-transform: uppercase !important;
+    border: none !important;
+    height: 40px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    font-size: 20px;
+    min-width: 200px;
+    background-color: rgb(255, 146, 98);
+    border-radius: 30px;
+}
+
+#btnRecordSave {
+    text-transform: uppercase !important;
+    border: none !important;
+    height: 40px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    font-size: 20px;
+    min-width: 200px;
+    background-color: rgb(255, 146, 98);
+    border-radius: 30px;
+}
+
+.periodOneDiv {
+    border-radius: 30px;
+    background-color: rgb(222, 230, 119);
+    display : flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-left: 35px;
+    padding-right: 35px;
+}
+#recordChange {
+    border: none
+}
+.periodTwoDiv {
+    border-radius: 30px;
+    background-color: rgb(235, 177, 225);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 35px;
+    padding-right: 35px;
+}

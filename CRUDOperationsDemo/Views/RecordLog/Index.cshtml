@@ -1,0 +1,125 @@
+﻿@using School.Models;
+@model RecordLogViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" runat="server">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="../css/semester.css" rel="stylesheet" runat="server" />
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row fs-2">
+            <div class="col-4">
+                <div class="d-flex justify-content-start align-items-center">
+                    <div style="color :red">
+                        Day of Week : &nbsp;
+                    </div>
+                    <div>
+                        @Model.dayOfWeek
+                    </div>
+                </div>
+                <div class="d-flex justify-content-start align-items-center">
+                    <div style="color :red">
+                        Date : &nbsp;
+                    </div>
+                    <input id="recordChange" type="date" value=@Model.date.ToString("yyyy-MM-dd")>
+                </div>
+                <div class="d-flex justify-content-start align-items-center fs-4">
+                    <div style="color :red">
+                        Semester : &nbsp;
+                    </div>
+                    <div class="">
+                        @Model.semester
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <button id="btnRecordSave">SAVE</button>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="d-flex justify-content-end align-items-center">
+                    <img src="../images/logo.png" onclick="onAdminDash(this)"/>
+                </div>
+            </div>
+            @{
+            List<string> lstSubjects = new List<string>();
+
+            RecordLogItem itemOld = null;
+            @foreach(var item in Model.records)
+            {
+                bool bHeadingBar = false;
+
+                @if (!lstSubjects.Contains(item.subject))
+                {
+                    lstSubjects.Add(item.subject);
+                    bHeadingBar = true;
+                }
+                else
+                {
+                    if (item.periodtimeofday != itemOld.periodtimeofday)
+                        bHeadingBar = true;
+                }
+
+                @if (bHeadingBar)
+                {
+                    <div class="col-12 mt-5">
+                        <div class="periodOneDiv fs-3">
+                            <div>
+                                @Html.DisplayFor(modelItem => item.subject) <span style="color: red;">@Html.DisplayFor(modelItem => item.teacher)</span>
+                            </div>
+                            <div>
+                                PERIOD: <span style="color: red;">@Html.DisplayFor(modelItem => item.period)</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                itemOld = item;
+                @foreach (var item2 in Model.records)
+                {
+                    @if(item != item2)
+                    {
+                        continue;
+                    }
+
+                    <div class="col-12 p-2">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="fs-5 d-flex" style="column-gap: 20px;">
+                                    <select class="itemTypes" style="width:50%" aria-label="Input Teacher">
+                                        @foreach (var type in item2.types)
+                                        {
+                                            @if(item2.type == type)
+                                            {
+                                                <option style="color: rgb(156, 98, 11);width:50% !important" id=@Html.DisplayFor(modelItem => type) selected="selected">@Html.DisplayFor(modelItem => type)</option>
+                                            }
+                                            else
+                                            {
+                                                <option style="color: rgb(156, 98, 11);width:50% !important" id=@Html.DisplayFor(modelItem => type)>@Html.DisplayFor(modelItem => type)</option>
+                                            }
+                                        }
+                                    </select>
+                                    <div>@Html.DisplayFor(modelItem => item2.student)</div>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="fs-5 d-flex" style="column-gap: 20px;">
+                                    <div style="color: rgb(156, 98, 11); min-width: 150px;">Add Note:</div>
+                                    <input type="text" id=@Html.DisplayFor(modelItem => item2.Id) class="inputAddNote" value="@Html.DisplayFor(modelItem => item2.note)"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }}
+        </div>
+    </div>
+</body>
+}

@@ -1,0 +1,107 @@
+﻿@using School.Models
+@model EnrollmentViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    <link rel="stylesheet" runat="server" href="https://site-assets.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link href="../css/enrollment.css" rel="stylesheet" runat="server" />
+<body>
+    <div class="container mt-5">
+        <div class="row fs-2">
+            <div class="col-4">
+                <div class="d-flex justify-content-end">
+                    <span style="color: red;">Teacher:</span>
+                </div>
+            </div>
+            <div class="col-8">
+                <select id="eTeacher" class="form-select" aria-label="Input Teacher">
+                @foreach(var item in Model.users)
+                    {
+                            @if (item.Title == "teacher")
+                            {
+                                @if (item.Id == @Model.teacherId)
+                                {
+                                    <option id=@Html.DisplayFor(modelItem => item.Id) selected="selected">@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</option>
+                                }
+                                else
+                                {
+                                    <option id=@Html.DisplayFor(modelItem => item.Id)>@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</option>                                                               
+                                }
+                            }
+                    }
+                        }
+                </select>
+            </div>
+            <div class="col-4 mt-3">
+                <div class="d-flex justify-content-end">
+                    <span style="color: red;">Subject:</span>
+                </div>
+            </div>
+            <div class="col-8 mt-3">
+               <select class="form-select" id="eSubject" aria-label="Input Student">
+               @if(Model.subjects != null)
+               {
+                    @foreach(var item in Model.subjects)
+                    {
+                        @if(item.Name == @Model.subjectName)
+                        {
+                            <option id=@Html.DisplayFor(modelItem => item.Name) selected="selected">@Html.DisplayFor(modelItem => item.Name)</option>                                
+                        }
+                        else
+                        {
+                            <option id=@Html.DisplayFor(modelItem => item.Name)>@Html.DisplayFor(modelItem => item.Name)</option>                                    
+                        }
+                    }
+               }
+               </select>
+            </div>
+
+            <div class="col-12 mt-5">
+                <span style="color: red;">Enrolled Students</span>
+                <span>@Model.enrolls.Count()</span>
+            </div>
+            <div class="col-12 mt-3">
+                <div class="d-flex flex-wrap align-items-center" style="margin-left: 20px !important">
+                    @if(Model != null)
+                        {
+                            @foreach (var item in Model.enrolls)
+                            {
+                                <div class="itemDiv">
+                                    <div>
+                                        @Html.DisplayFor(modelItme => item.Student)
+                                    </div>
+                                    <i class="fa fa-trash" onclick= "onDeleteEnroll(this)" id="@Html.DisplayFor(modelItem => item.Id)" aria-hidden="true"></i>
+                                </div>                                                                                                            
+                            }
+                        }
+                </div>
+            </div>
+
+            <div class="col-3 mt-5">
+                <div class="d-flex justify-content-end">
+                    <span style="color: red;">Add Student:</span>
+                </div>
+            </div>
+            <div class="col-9 mt-5">
+                <select class="form-select" id="eStudent" aria-label="Input Student">
+                @foreach(var item in Model.users)
+                    {
+                    @if(item.Title == "student")
+                        {
+                            <option>@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</option>    
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-12 mt-5">
+                <div class="d-flex justify-content-end">
+                    <button type="button" id ="btnCreateEnroll">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+}

@@ -1,0 +1,105 @@
+button {
+    text-transform : uppercase !important;
+    border : none !important;
+    height : 40px;
+    cursor : pointer;
+    letter-spacing : 2px;
+    font-size: 20px;
+
+    min-width: 200px;
+
+    background-color: rgb(255, 146, 98);
+    border-radius: 30px;
+}
+.circleDiv {
+    margin-right: 15px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.checkDiv {
+    margin-right: 15px;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.itemDiv {
+    margin-bottom: 20px;
+
+    background-color: rgb(237, 241, 137);
+    width: 30%;
+
+    margin-right: 30px !important;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    border-radius: 30px;
+
+    padding: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+
+    font-size: 25px;
+}
+
+.createDiv {
+    position: relative ;
+}
+
+.containerDiv {
+    min-height: calc(100vh + 20px);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px !important;
+}
+
+#newFirstName {
+    outline: 1px solid gray !important;
+    height: 40px;
+    padding: 20px;
+    border-radius: 30px;
+    border: none;
+    font-size: 20px;
+    min-width: 400px;
+}
+
+#newLastName {
+    outline: 1px solid gray !important;
+    height: 40px;
+    padding: 20px;
+    border-radius: 30px;
+    border: none;
+    font-size: 20px;
+    min-width: 400px;
+}
+
+#newSchoolEmail {
+    outline: 1px solid gray !important;
+    height: 40px;
+    padding: 20px;
+    border-radius: 30px;
+    border: none;
+    font-size: 20px;
+    min-width: 400px;
+}
+
+.labelDiv {
+    top: -22.5px;
+    position: absolute;
+    background-color: #df8ceb;
+    border-radius: 20px;
+    height: 55px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
